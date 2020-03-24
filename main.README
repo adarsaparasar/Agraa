@@ -1,0 +1,15 @@
+Apply the concept of reflection by using 2D array:
+  0s represent the untraced part and 1s represent the traced part of the array.
+
+Algorithm:
+  Initially two points are given denoting the path of the array.
+  1 An equation is constructed and stored.
+  2 The ray is traced by converting 0s to 1s as it moves.
+  3 Upon reaching a boundary reflection is done.(Reflection scheme is explained at the end of the document)
+  4 Steps 1 to 3 are repeated till the whole of the array is covered or an equation is repeated.
+
+
+Reflection scheme:
+ Given the initial points and the second pair denoting the direction, the co-ordinates are calculated.
+ If the calculated co-ordinates are found to be out of bounds then depending upon the axis of boundary the corresponding co-ordinates are inverted.
+ 
