@@ -1,7 +1,8 @@
 import numpy as np
 
+#no if iterations
 n = 150
-i = 0
+
 
 def reflection(ar,x,y,xi,yi):
     xsize = ar.shape[1]
