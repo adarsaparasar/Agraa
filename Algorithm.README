@@ -6,7 +6,7 @@ Algorithm:
   1 An equation is constructed and stored.
   2 The ray is traced by converting 0s to 1s as it moves.
   3 Upon reaching a boundary reflection is done.(Reflection scheme is explained at the end of the document)
-  4 Steps 1 to 3 are repeated till the whole of the array is covered or an equation is repeated.
+  4 Steps 1 to 3 are repeated till the whole of the array is covered or an equation is repeated (by using dictionary).
 
 
 Reflection scheme:
