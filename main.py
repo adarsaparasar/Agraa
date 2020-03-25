@@ -3,7 +3,7 @@ import numpy as np
 #no if iterations
 n = 150
 
-
+#function for reflection
 def reflection(ar,x,y,xi,yi):
     xsize = ar.shape[1]
     ysize = ar.shape[0]
@@ -15,28 +15,24 @@ def reflection(ar,x,y,xi,yi):
     if x<0:
         x=-x
         xi=-xi
-        print("#")
 
     if y<0:
         y=-y
         yi=-yi
-        print("*")
 
     if x>=xsize:
         x = xsize-abs((xi+x)-(xsize-1))
         xi = -xi
-        print("#")
 
     if y>=ysize:
         y = ysize-abs((yi+y)-(ysize-1))
         yi = -yi
-        print("*")
 
 
     move(ar,x,y,xi,yi)
 
 
-
+#function for movement iteration
 def move(ar,x,y,xi,yi):
     ysize = ar.shape[0]
     xsize = ar.shape[1]
@@ -61,4 +57,3 @@ def createarray(y,x):
 
 #function call for creatarray()
 createarray(6,3)
-print(i)
