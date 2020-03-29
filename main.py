@@ -1,10 +1,11 @@
-import numpy as np #library for using array objects 
+import numpy as np                  #library for using array objects
+from res.equation import Equation   #class to create Equation object
 
-#no if iterations
-n = 150
+eqList = set()   #declare global set of equation objects
 
 #function for reflection
-def reflection(ar,x,y,xi,yi): #reflection(ar,x,y,x-increment,y-increment)
+def reflection(ar,x,y,xi,yi,eq): #reflection(ar,x,y,x-increment,y-increment,eq)
+    eqList.add(eq)
     xsize = ar.shape[1]
     ysize = ar.shape[0]
     x=x+xi
@@ -30,29 +31,55 @@ def reflection(ar,x,y,xi,yi): #reflection(ar,x,y,x-increment,y-increment)
 
     move(ar,x,y,xi,yi)
 
+#function to check ray re-tracing. Returns 0 if 0 found in current path otherwise 1
+def checkRay(ar,x,y,xi,yi):
+    x = x+xi
+    y = y+yi
+    xsize = ar.shape[1]
+    ysize = ar.shape[0]
+    while x>=0 and y>=0 and x<xsize and y<ysize:
+        if ar[y][x] == 0:
+            return 0
+        x = x + xi
+        y = y + yi
+    return 1
+
 
 #function for movement iteration
 def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
     ysize = ar.shape[0]
     xsize = ar.shape[1]
-    global n
-    while n>=0:
-       n = n-1
-       if x>=xsize or x<0 or y >=ysize or y<0: #condition to check if out of bounds
-           reflection(ar,x-xi,y-yi,xi,yi)
-       try:
-           ar[y][x] = 1
-           print(ar)
-           x = x+xi
-           y = y+yi
-       except Exception as e:
-           print
+
+    #creating equation object using Equation
+    eq = Equation(x,y,x+xi,y+yi)
+    eq = eq.getLine()
+
+    while eq not in eqList:
+        if x>=xsize or x<0 or y >=ysize or y<0:      #condition to check if out of bounds
+            reflection(ar,x-xi,y-yi,xi,yi,eq)
+        try:
+            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:   #checks if current position already traced and calls checkRay()
+                break
+            else:
+                ar[y][x] = 1
+                print(ar)
+                x = x+xi
+                y = y+yi
+        except Exception as e:
+            print
+
 
 
 #function for declaring 2D array and starting
 def createarray(y,x): #createarray(ysize,xsize)
-    ar = np.zeros((y, x))
-    move(ar,1,1,1,6)
+    arr = np.zeros((y, x))
+    return arr
 
-#function call for creatarray()
-createarray(6,3)
+#enter input here
+#xsize, ysize for dimensions of array
+#x and y for initial positions
+#xi,yi for directions with respect to x,y
+#input = (ysize,xsize,x,y,xi,yi)
+
+ar = createarray(ysize,xsize)
+move(ar,x,y,xi,yi)
