@@ -1,0 +1,32 @@
+# Create a class Equation :
+   Members :
+     Two points
+     Direction (upwards or downwards)
+   Methods :
+     slope() #to return slope
+     stringEq() #return full equation in the form "y = mx + c"
+
+     NOTE:when calculating m store in the form of fraction so as to avoid
+          rounding error as rounding off may lead to redundant slopes
+          e.g.
+           y = 3/7x+4
+
+
+
+# Use dictionary to store equations already traced.
+
+
+# Create a single function start the program with the following parameters:
+
+   #code starts here
+   def  start(xstart coordinate,
+              ystart coordinate,
+              next x point for direction,
+              next y point for direction):
+
+        move(xstart,ystart,x',y')   #x' and y' are after division by their GCD
+    #code ends here
+
+
+# Program must terminate when path is already traced i.e. equation present in
+  dictionary and all 1s along current path

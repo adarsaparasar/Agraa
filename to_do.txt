@@ -1,0 +1,4 @@
+add full documentation for main.py and res.equation
+create a clean driver class that utilises main.py and res.equation
+
+create a driver() function that stores information such as dimensions and no of iterations and percentage completion
