@@ -1,9 +1,9 @@
 import numpy as np #library for using array objects
-from res.equation import Equation
+from res.equation import Equation   #imports the Equation class 
 
 
 
-eqList = set()
+eqList = set()   #Declares global set of equations traversed
 
 
 
@@ -64,7 +64,7 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
         if x>=xsize or x<0 or y >=ysize or y<0: #condition to check if out of bounds
             reflection(ar,x-xi,y-yi,xi,yi,eq)
         try:
-            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:
+            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:   #condition to end program if path already traced
                 break
             else:
                 ar[y][x] = 1
@@ -80,7 +80,7 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
 #function for declaring 2D array and starting
 def createarray(y,x): #createarray(ysize,xsize)
     ar = np.zeros((y, x))
-    move(ar,1,1,1,1)
+    move(ar,1,1,1,1)   #(array,xstart,ystart,x increment,y increment)
 
 #function call for creatarray()
-createarray(6,3)
+createarray(6,3)  #(ysize,xsize)
