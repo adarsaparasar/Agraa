@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 import numpy as np                  #library for using array objects
 from res.equation import Equation   #class to create Equation object
+=======
+import numpy as np #library for using array objects
+from res.equation import Equation   #imports the Equation class 
+
+
+
+eqList = set()   #Declares global set of equations traversed
+
+>>>>>>> 47d5cbc77145954d4a345034550751cf9b51d0f6
 
 eqList = set()   #declare global set of equation objects
 
@@ -58,7 +68,11 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
         if x>=xsize or x<0 or y >=ysize or y<0:      #condition to check if out of bounds
             reflection(ar,x-xi,y-yi,xi,yi,eq)
         try:
+<<<<<<< HEAD
             if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:   #checks if current position already traced and calls checkRay()
+=======
+            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:   #condition to end program if path already traced
+>>>>>>> 47d5cbc77145954d4a345034550751cf9b51d0f6
                 break
             else:
                 ar[y][x] = 1
@@ -72,6 +86,7 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
 
 #function for declaring 2D array and starting
 def createarray(y,x): #createarray(ysize,xsize)
+<<<<<<< HEAD
     arr = np.zeros((y, x))
     return arr
 
@@ -83,3 +98,10 @@ def createarray(y,x): #createarray(ysize,xsize)
 
 ar = createarray(ysize,xsize)
 move(ar,x,y,xi,yi)
+=======
+    ar = np.zeros((y, x))
+    move(ar,1,1,1,1)   #(array,xstart,ystart,x increment,y increment)
+
+#function call for creatarray()
+createarray(6,3)  #(ysize,xsize)
+>>>>>>> 47d5cbc77145954d4a345034550751cf9b51d0f6
