@@ -1,11 +1,7 @@
-import numpy as np #library for using array objects
-from res.equation import Equation
+import numpy as np                  #library for using array objects
+from res.equation import Equation   #class to create Equation object
 
-
-
-eqList = set()
-
-
+eqList = set()   #declare global set of equation objects
 
 #function for reflection
 def reflection(ar,x,y,xi,yi,eq): #reflection(ar,x,y,x-increment,y-increment,eq)
@@ -49,8 +45,6 @@ def checkRay(ar,x,y,xi,yi):
     return 1
 
 
-
-
 #function for movement iteration
 def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
     ysize = ar.shape[0]
@@ -61,17 +55,16 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
     eq = eq.getLine()
 
     while eq not in eqList:
-        if x>=xsize or x<0 or y >=ysize or y<0: #condition to check if out of bounds
+        if x>=xsize or x<0 or y >=ysize or y<0:      #condition to check if out of bounds
             reflection(ar,x-xi,y-yi,xi,yi,eq)
         try:
-            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:
+            if ar[y][x] == 1 and checkRay(ar,x,y,xi,yi) == 1:   #checks if current position already traced and calls checkRay()
                 break
             else:
                 ar[y][x] = 1
                 print(ar)
                 x = x+xi
                 y = y+yi
-
         except Exception as e:
             print
 
@@ -79,8 +72,14 @@ def move(ar,x,y,xi,yi): #move(array,x,y,x-increment,y-increment)
 
 #function for declaring 2D array and starting
 def createarray(y,x): #createarray(ysize,xsize)
-    ar = np.zeros((y, x))
-    move(ar,1,1,1,1)
+    arr = np.zeros((y, x))
+    return arr
 
-#function call for creatarray()
-createarray(6,3)
+#enter input here
+#xsize, ysize for dimensions of array
+#x and y for initial positions
+#xi,yi for directions with respect to x,y
+#input = (ysize,xsize,x,y,xi,yi)
+
+ar = createarray(ysize,xsize)
+move(ar,x,y,xi,yi)
